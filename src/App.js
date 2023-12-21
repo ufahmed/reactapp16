@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter , Routes, Route} from 'react-router-dom';
+import Home from './components/Home';
+import NumberDisplay from './components/NumberDisplay';
+import WordDisplay from './components/WordDisplay';
+import StyledWordDisplay from './components/StyledWordDisplay';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+      <Routes>
+        <Route  path="/home" element={<Home/>} />
+        <Route  path="/:number" element={<NumberDisplay/>} />
+        <Route  path="/:word" element={<WordDisplay/>} />
+        <Route  path="/:word/:color/:background" element={<StyledWordDisplay/>} />
+      </Routes>
+      </BrowserRouter>
     </div>
+    
   );
-}
+};
 
 export default App;
